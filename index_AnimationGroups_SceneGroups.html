@@ -35,7 +35,7 @@
 	// meshes, armatures and animations to use. We will load the whole scene for each object and clone it for each unit.
 	// Models are from https://www.mixamo.com/
 	var MODELS = [
-		{ name: "SM_IOTA_RUNNING" }
+		{ name: "SM_RUNNING" }
 		// { name: "RiflePunch" },
 	];
 	// Here we define instances of the models that we want to place in the scene, their position, scale and the animations
@@ -93,12 +93,12 @@
 		group.name="fighter";
 		animationGroup = new THREE.AnimationObjectGroup();
 		var num=parseInt(document.getElementById('number').getAttribute('value'));
-		for (i=0;i<num;i++)
+		for (i=0;i<10;i++)
 		{
 			var z=Math.floor((Math.random() * -2998) -1);
 			var y=25;//HÖHE
 			UNITS.push({id:id, 
-				modelName: "SM_IOTA_RUNNING",
+				modelName: "SM_RUNNING",
 				meshName: "Stickman",
 				position: { x: 0, //0 
 							y: y, //2
@@ -234,9 +234,14 @@
 		for ( var i = 0; i < mixers.length; ++ i ) {
 			mixers[ i ].update( mixerUpdateDelta );
 		}
+		console.log(renderer.info.render);
 		time+=mixerUpdateDelta;
 		if(time>1)
 		{
+			
+			//console.log(mixers.length);
+			//console.log(UNITS.length);
+			//console.log(group.length);
 			if(mixers.length>30)
 			{
 				mixers.pop();
@@ -325,7 +330,7 @@
 		worldScene.add( mesh );
 		
 		//links
-		var texture = new THREE.TextureLoader().load( 'texture/Stone.jpg' );
+		var texture = new THREE.TextureLoader().load( 'texture/left.jpg' );
 		var material99 = new THREE.MeshBasicMaterial( { map: texture } );
 		var geometry = new THREE.PlaneGeometry( 3000,1000 );
 		var mesh= new THREE.Mesh( geometry, material99 );
@@ -336,7 +341,7 @@
 		worldScene.add( mesh );
 		
 		//rechts
-		var texture = new THREE.TextureLoader().load( 'texture/Stone.jpg' );
+		var texture = new THREE.TextureLoader().load( 'texture/midright.jpg' );
 		var material99 = new THREE.MeshBasicMaterial( { map: texture } );
 		var geometry = new THREE.PlaneGeometry( 3000,1000 );
 		var mesh= new THREE.Mesh( geometry, material99 );
@@ -347,7 +352,7 @@
 		worldScene.add( mesh );
 		
 		//hinten
-		var texture = new THREE.TextureLoader().load( 'texture/Stone.jpg' );
+		var texture = new THREE.TextureLoader().load( 'texture/midright.jpg' );
 		var material99 = new THREE.MeshBasicMaterial( { map: texture } );
 		var geometry = new THREE.PlaneGeometry( 1500,1000 );
 		var mesh= new THREE.Mesh( geometry, material99 );
@@ -357,7 +362,7 @@
 		worldScene.add( mesh );
 		
 		//oben
-		var texture = new THREE.TextureLoader().load( 'texture/Stone.jpg' );
+		var texture = new THREE.TextureLoader().load( 'texture/top.jpg' );
 		var material99 = new THREE.MeshBasicMaterial( { map: texture } );
 		var geometry = new THREE.PlaneGeometry( 1000,3000 );
 		var mesh= new THREE.Mesh( geometry, material99 );
